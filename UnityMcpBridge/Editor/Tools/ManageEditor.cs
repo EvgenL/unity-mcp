@@ -228,7 +228,7 @@ namespace UnityMcpBridge.Editor.Tools
             {
                 Tool currentTool = UnityEditor.Tools.current;
                 string toolName = currentTool.ToString(); // Enum to string
-                bool customToolActive = UnityEditor.Tools.current == Tool.Custom; // Check if a custom tool is active
+                bool customToolActive = UnityEditor.Tools.current == UnityEditor.Tool.Custom; // Check if a custom tool is active
                 string activeToolName = customToolActive
                     ? EditorTools.GetActiveToolName()
                     : toolName; // Get custom name if needed
@@ -259,7 +259,7 @@ namespace UnityMcpBridge.Editor.Tools
                 if (Enum.TryParse<Tool>(toolName, true, out targetTool)) // Case-insensitive parse
                 {
                     // Check if it's a valid built-in tool
-                    if (targetTool != Tool.None && targetTool <= Tool.Custom) // Tool.Custom is the last standard tool
+                    if (targetTool != UnityEditor.Tool.None && targetTool <= UnityEditor.Tool.Custom) // UnityEditor.Tool.Custom is the last standard tool
                     {
                         UnityEditor.Tools.current = targetTool;
                         return Response.Success($"Set active tool to '{targetTool}'.");
@@ -578,7 +578,7 @@ namespace UnityMcpBridge.Editor.Tools
             // This is a placeholder. Real implementation depends on how custom tools
             // are registered and tracked in the specific Unity project setup.
             // It might involve checking static variables, calling methods on specific tool managers, etc.
-            if (UnityEditor.Tools.current == Tool.Custom)
+            if (UnityEditor.Tools.current == UnityEditor.Tool.Custom)
             {
                 // Example: Check a known custom tool manager
                 // if (MyCustomToolManager.IsActive) return MyCustomToolManager.ActiveToolName;
