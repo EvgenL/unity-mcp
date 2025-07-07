@@ -226,7 +226,7 @@ namespace UnityMcpBridge.Editor.Tools
         {
             try
             {
-                Tool currentTool = UnityEditor.Tools.current;
+                UnityEditor.Tool currentTool = UnityEditor.Tools.current;
                 string toolName = currentTool.ToString(); // Enum to string
                 bool customToolActive = UnityEditor.Tools.current == UnityEditor.Tool.Custom; // Check if a custom tool is active
                 string activeToolName = customToolActive
@@ -255,8 +255,8 @@ namespace UnityMcpBridge.Editor.Tools
         {
             try
             {
-                Tool targetTool;
-                if (Enum.TryParse<Tool>(toolName, true, out targetTool)) // Case-insensitive parse
+                UnityEditor.Tool targetTool;
+                if (Enum.TryParse<UnityEditor.Tool>(toolName, true, out targetTool)) // Case-insensitive parse
                 {
                     // Check if it's a valid built-in tool
                     if (targetTool != UnityEditor.Tool.None && targetTool <= UnityEditor.Tool.Custom) // UnityEditor.Tool.Custom is the last standard tool
